@@ -1,5 +1,4 @@
 package com.s.engt.datastructures;
-
 //A class for converting Infix to Postfix.
 public class InfixConvert {
 	private static int getOpNum(char a) {
@@ -40,11 +39,10 @@ public class InfixConvert {
 				char op2 = '\0';
 				while(true) {
 					if(operatorStack.isEmpty()) break;
-					op2 = operatorStack.peek();
-					if(op2 != '*' && op2 != '/') break;
 					op2 = operatorStack.pop();
 					if(op2 != '(')
 						postfix += " " + op2;
+					if(op2 != '*' && op2 != '/') break;
 				}
 			case '*': //Multiplication.
 			case '+': //Addition.
