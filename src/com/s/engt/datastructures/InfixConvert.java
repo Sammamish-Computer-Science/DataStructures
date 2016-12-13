@@ -1,5 +1,3 @@
-package com.s.engt.datastructures;
-
 //A class for converting Infix to Postfix.
 public class InfixConvert {
 	private static int getOpNum(char a) {
@@ -29,7 +27,11 @@ public class InfixConvert {
 				//Pop until an operator with lower precedence is found.
 				char op = '\0';
 				while(true) {
-					if(operatorStack.isEmpty()) break;
+					if(operatorStack.isEmpty()) {
+						//Unbalanced parenthesis, print error
+						System.err.println("Error: Unbalanced parenthesis! ");
+						return "";
+					}
 					op = operatorStack.pop();
 					if(op == '(') break;
 					postfix += " " + op;
@@ -40,11 +42,10 @@ public class InfixConvert {
 				char op2 = '\0';
 				while(true) {
 					if(operatorStack.isEmpty()) break;
-					op2 = operatorStack.peek();
-					if(op2 != '*' && op2 != '/') break;
 					op2 = operatorStack.pop();
 					if(op2 != '(')
 						postfix += " " + op2;
+					if(op2 != '*' && op2 != '/') break;
 				}
 			case '*': //Multiplication.
 			case '+': //Addition.
@@ -68,8 +69,12 @@ public class InfixConvert {
 		//Add operators to output.
 		while(!operatorStack.isEmpty()) {
 			char c = operatorStack.pop();
-			if(c != '(')
-				postfix += c;
+			if(c == '(') {
+				//Unbalanced parenthesis.
+				System.err.println("Error: Unbalanced parenthesis! ");
+				return "";
+			}
+			postfix += c;
 		}
 		return postfix;
 	}
