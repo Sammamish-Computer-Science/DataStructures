@@ -46,6 +46,23 @@ public class LinkedList<T> {
 		m_size++;
 	}
 	
+	//Deletes the node del and returns the data it held. After deleting, the current node m_cur will now point to prev.
+	//If delHead is true, deletes the node after head and does not read the value of prev.
+	public T delete(Node<T> prev, Node<T> del, boolean delHead) {
+		if(delHead) {
+			m_head.m_next = del.m_next;
+			
+		} else {
+			prev.m_next = del.m_next;
+		}
+		del.m_next = null; //Make sure that the deleted node doesn't point to part of the LinkedList anymore.
+		m_size--;
+		m_cur = prev;
+		T data = del.m_data;
+		del = null;
+		return data;
+	}
+	
 	public static void main(String[] args) {
 	}
 }
