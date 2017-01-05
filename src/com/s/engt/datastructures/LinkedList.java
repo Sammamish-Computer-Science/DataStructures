@@ -1,3 +1,5 @@
+import LinkedList.Node;
+
 /*
  * An implementation of a LinkedList, where T is the type of data held.
  */
@@ -29,6 +31,19 @@ public class LinkedList<T> {
 		m_cur = null;
 		m_head = new Head(m_cur);
 		m_size = 0;
+	}
+	
+	//Adds a node immediately after the node c, holding the data t. After adding, the current node m_cur will now point to the added node.
+	//If addHead is true, adds to the beginning and does not read c.
+	public void add(Node<T> c, T t, boolean addHead) {
+		Node<T> newnode;
+		if(addHead) {
+			newnode = new Node<T>(m_head.m_next, t);
+		} else {
+			newnode = new Node<T>(m_cur.m_next, t);
+		}
+		m_cur = newnode;
+		m_size++;
 	}
 	
 	public static void main(String[] args) {
