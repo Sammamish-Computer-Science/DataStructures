@@ -46,6 +46,12 @@ public class LinkedList<T> {
 		m_size++;
 	}
 	
+	//Utility method to add a node to the end of this list.
+	public void addEnd(T t) {
+		Node<T> last = getLast();
+		add(last, t, last == null);
+	}
+	
 	//Deletes the node del and returns the data it held. After deleting, the current node m_cur will now point to prev.
 	//If delHead is true, deletes the node after head and does not read the value of prev.
 	public T delete(Node<T> prev, Node<T> del, boolean delHead) {
