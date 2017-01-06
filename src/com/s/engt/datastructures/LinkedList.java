@@ -63,6 +63,14 @@ public class LinkedList<T> {
 		return data;
 	}
 	
+	//Finds the last node in this list.
+	public Node<T> getLast() {
+		Node<T> cur;
+		for(cur = m_head.m_next; cur.m_next != null; cur = cur.m_next) {
+		}
+		return cur;
+	}
+	
 	public static void main(String[] args) {
 		LinkedList<String> ll = new LinkedList<String>();
 		ll.add(null, "Hello, ", true);
