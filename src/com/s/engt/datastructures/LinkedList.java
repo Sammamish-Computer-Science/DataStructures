@@ -69,6 +69,14 @@ public class LinkedList<T> {
 		return data;
 	}
 	
+	//Finds the second to last node in this list.
+	public Node<T> getSecondLast() {
+		Node<T> cur;
+		for(cur = m_head.m_next; cur != null && cur.m_next != null && cur.m_next.m_next != null; cur = cur.m_next) {
+		}
+		return cur;
+	}
+	
 	//Finds the last node in this list.
 	public Node<T> getLast() {
 		Node<T> cur;
