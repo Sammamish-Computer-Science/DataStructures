@@ -64,5 +64,16 @@ public class LinkedList<T> {
 	}
 	
 	public static void main(String[] args) {
+		LinkedList<String> ll = new LinkedList<String>();
+		ll.add(null, "Hello, ", true);
+		System.out.println("Data: " + ll.m_head.m_next.m_data);
+		System.out.println("Size: " + ll.m_size);
+		ll.add(ll.m_head.m_next.m_next, "World", false);
+		System.out.println("Data: " + ll.m_head.m_next.m_next.m_data);
+		System.out.println("Size: " + ll.m_size);
+		System.out.println("Deleted Data: " + ll.delete(ll.m_head.m_next, ll.m_head.m_next.m_next, false));
+		System.out.println("Size: " + ll.m_size);
+		System.out.println("Deleted Data: " + ll.delete(ll.m_head.m_next, ll.m_head.m_next, true));
+		System.out.println("Size: " + ll.m_size);
 	}
 }
