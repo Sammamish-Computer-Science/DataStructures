@@ -55,6 +55,10 @@ public class LinkedList<T> {
 	//Deletes the node del and returns the data it held. After deleting, the current node m_cur will now point to prev.
 	//If delHead is true, deletes the node after head and does not read the value of prev.
 	public T delete(Node<T> prev, Node<T> del, boolean delHead) {
+		if(m_size < 1) {
+			System.err.println("Cannot delete from an empty Linked List!");
+			return null;
+		}
 		if(delHead) {
 			m_head.m_next = del.m_next;
 			
@@ -94,6 +98,8 @@ public class LinkedList<T> {
 		System.out.println("Data: " + ll.m_head.m_next.m_next.m_data);
 		System.out.println("Size: " + ll.m_size);
 		System.out.println("Deleted Data: " + ll.delete(ll.m_head.m_next, ll.m_head.m_next.m_next, false));
+		System.out.println("Size: " + ll.m_size);
+		System.out.println("Deleted Data: " + ll.delete(ll.m_head.m_next, ll.m_head.m_next, true));
 		System.out.println("Size: " + ll.m_size);
 		System.out.println("Deleted Data: " + ll.delete(ll.m_head.m_next, ll.m_head.m_next, true));
 		System.out.println("Size: " + ll.m_size);
