@@ -75,8 +75,9 @@ public class LinkedList<T> {
 	
 	//Finds the second to last node in this list.
 	public Node<T> getSecondLast() {
+		if(m_size < 2) return null;
 		Node<T> cur;
-		for(cur = m_head.m_next; cur != null && cur.m_next != null && cur.m_next.m_next != null; cur = cur.m_next) {
+		for(cur = m_head.m_next; cur.m_next.m_next != null; cur = cur.m_next) {
 		}
 		return cur;
 	}
