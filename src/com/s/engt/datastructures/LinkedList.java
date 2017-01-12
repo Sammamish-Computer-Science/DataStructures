@@ -1,4 +1,4 @@
-import LinkedList.Node;
+import LinkedList.Head;
 
 /*
  * An implementation of a LinkedList, where T is the type of data held.
@@ -34,13 +34,15 @@ public class LinkedList<T> {
 	}
 	
 	//Adds a node immediately after the node c, holding the data t. After adding, the current node m_cur will now point to the added node.
-	//If addHead is true, adds to the beginning and does not read c.
+	//If addHead is true, adds to the beginning and does not read the value of c.
 	public void add(Node<T> c, T t, boolean addHead) {
 		Node<T> newnode;
 		if(addHead) {
 			newnode = new Node<T>(m_head.m_next, t);
+			m_head.m_next = newnode;
 		} else {
 			newnode = new Node<T>(m_cur.m_next, t);
+			m_cur.m_next = newnode;
 		}
 		m_cur = newnode;
 		m_size++;
@@ -61,7 +63,6 @@ public class LinkedList<T> {
 		}
 		if(delHead) {
 			m_head.m_next = del.m_next;
-			
 		} else {
 			prev.m_next = del.m_next;
 		}
@@ -73,6 +74,19 @@ public class LinkedList<T> {
 		return data;
 	}
 	
+	public T deleteEnd() {
+		Node<T> secondLast = getSecondLast();
+		if(secondLast == null) return delete(secondLast, secondLast, true);
+		return delete(secondLast, secondLast.m_next, false);
+	}
+	//Finds the last node in this list.
+	private Node<T> getLast() {
+		Node<T> cur;
+		for(cur = m_head.m_next; cur != null && cur.m_next != null; cur = cur.m_next) {
+		}
+		return cur;
+	}
+	
 	//Finds the second to last node in this list.
 	private Node<T> getSecondLast() {
 		if(m_size < 2) return null;
@@ -82,11 +96,14 @@ public class LinkedList<T> {
 		return cur;
 	}
 	
-	//Finds the last node in this list.
-	private Node<T> getLast() {
-		Node<T> cur;
-		for(cur = m_head.m_next; cur.m_next != null; cur = cur.m_next) {
-		}
-		return cur;
+	//Finds the data of the last node in this list.
+	public T getLastData() {
+		return getLast().m_data;
 	}
+	
+	//Finds the data of the second to last node in this list.
+	public T getSecondLastData() {
+		return getSecondLast().m_data;
+	}
+
 }
