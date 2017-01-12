@@ -1,11 +1,17 @@
 
-public class LinkedListTester<T> {
-	private LinkedList<T> m_ll;
-	private LinkedListTester(LinkedList<T> ll) {
-		m_ll = ll;
+public class LinkedListTester {
+	
+	//Tests the getLastData() method.
+	//Returns whether the operation succeeds or not.
+	private static boolean testGetLastData() {
+		LinkedList<String> ll = new LinkedList<String>();
+		if(ll.getLastData() != null) return false;
+		String data = "g;awuophuwzekl;nhjAW:eh";
+		ll.addEnd(data);
+		return ll.getLastData().equals(data);
 	}
 	public static void main(String[] args) {
-		LinkedListTester<String> llt = new LinkedListTester<String>(new LinkedList<String>());
+		System.out.println("Testing getLastData() returned " + testGetLastData());
 		
 	}
 
