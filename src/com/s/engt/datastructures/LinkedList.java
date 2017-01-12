@@ -1,4 +1,5 @@
 import LinkedList.Head;
+import LinkedList.Node;
 
 /*
  * An implementation of a LinkedList, where T is the type of data held.
@@ -79,21 +80,18 @@ public class LinkedList<T> {
 		if(secondLast == null) return delete(secondLast, secondLast, true);
 		return delete(secondLast, secondLast.m_next, false);
 	}
-	//Finds the last node in this list.
-	private Node<T> getLast() {
-		Node<T> cur;
-		for(cur = m_head.m_next; cur != null && cur.m_next != null; cur = cur.m_next) {
-		}
-		return cur;
+	//Finds the data of the last node in this list.
+	public T getLastData() {
+		Node<T> last = getLast();
+		if(last != null) return last.m_data;
+		return null;
 	}
 	
-	//Finds the second to last node in this list.
-	private Node<T> getSecondLast() {
-		if(m_size < 2) return null;
-		Node<T> cur;
-		for(cur = m_head.m_next; cur.m_next.m_next != null; cur = cur.m_next) {
-		}
-		return cur;
+	//Finds the data of the second to last node in this list.
+	public T getSecondLastData() {
+		Node<T> secondlast = getSecondLast();
+		if(secondlast != null) return secondlast.m_data;
+		return null;
 	}
 	
 	//Finds the data of the last node in this list.
