@@ -36,7 +36,7 @@ public class LinkedList<T> {
 	
 	//Adds a node immediately after the node c, holding the data t. After adding, the current node m_cur will now point to the added node.
 	//If addHead is true, adds to the beginning and does not read the value of c.
-	public void add(Node<T> c, T t, boolean addHead) {
+	private void add(Node<T> c, T t, boolean addHead) {
 		Node<T> newnode;
 		if(addHead) {
 			newnode = new Node<T>(m_head.m_next, t);
