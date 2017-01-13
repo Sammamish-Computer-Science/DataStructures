@@ -42,8 +42,8 @@ public class LinkedList<T> {
 			newnode = new Node<T>(m_head.m_next, t);
 			m_head.m_next = newnode;
 		} else {
-			newnode = new Node<T>(m_cur.m_next, t);
-			m_cur.m_next = newnode;
+			newnode = new Node<T>(c.m_next, t);
+			c.m_next = newnode;
 		}
 		m_cur = newnode;
 		m_size++;
