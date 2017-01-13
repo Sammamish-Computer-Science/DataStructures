@@ -48,9 +48,43 @@ public class LinkedListTester {
 		
 		return true;
 	}
+	
+	//Tests the add() method.
+	private static boolean testAdd() {
+		LinkedList<String> ll = new LinkedList<String>();
+		
+		try {
+			String data0 = "awgheawywashasdhwAehaseh";
+			ll.add(data0, -1);
+			return false;
+		} catch(IndexOutOfBoundsException e) {}
+		
+		String data = "236p2oqy8ugoqwehjAW:ehj";
+		ll.add(data, 0);
+		if(!ll.getData(0).equals(data)) return false;
+		
+		String data2 = "sw9a4y8uawehwjaseh";
+		ll.add(data2, 0);
+		if(!ll.getData(0).equals(data2)) return false;
+		
+		String data3 = "73wew34shasheawehawehawehwaehawehq236q23yhwawgW@#^47aW$&";
+		ll.add(data3, 2);
+		if(!ll.getData(2).equals(data3)) return false;
+		
+		try {
+			String data4 = "q263989g87sdguioawsshdseh";
+			ll.add(data4, 4);
+			return false;
+		} catch(IndexOutOfBoundsException e) {}
+		
+		return true;
+	}
+		
 	public static void main(String[] args) {
 		System.out.println("Testing getLastData() returned " + testGetLastData());
 		System.out.println("Testing getSecondLastData() returned " + testGetSecondLastData());
+		System.out.println("Testing getData() returned " + testGetData());
+		System.out.println("Testing add() returned " + testAdd());
 	}
 
 }
