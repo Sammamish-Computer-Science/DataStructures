@@ -80,6 +80,20 @@ public class LinkedList<T> {
 		if(secondLast == null) return delete(secondLast, secondLast, true);
 		return delete(secondLast, secondLast.m_next, false);
 	}
+	
+	//Gets the n-th node in the list (zero-based).
+	private Node<T> get(int index) {
+		if(index < 0 || index > m_size-1) throw new IndexOutOfBoundsException("LinkedList index out of bounds!");
+		Node<T> cur = m_head.m_next;
+		for(int i = 0; i < index; i++, cur = cur.m_next);
+		return cur;
+	}
+	
+	//Gets the data of the n-th node in the list (zero-based).
+	public T getData(int index) {
+		return get(index).m_data;
+	}
+		
 	//Finds the data of the last node in this list.
 	public T getLastData() {
 		Node<T> last = getLast();
