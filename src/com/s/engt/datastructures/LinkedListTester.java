@@ -1,12 +1,18 @@
+import java.util.UUID;
 
 public class LinkedListTester {
+	
+	//Generates a random string
+	private static String randString() {
+		return UUID.randomUUID().toString();
+	}
 	
 	//Tests the getLastData() method.
 	//Returns whether the operation succeeded or not.
 	private static boolean testGetLastData() {
 		LinkedList<String> ll = new LinkedList<String>();
 		if(ll.getLastData() != null) return false;
-		String data = "g;awuophuwzekl;nhjAW:eh";
+		String data = randString();
 		ll.addEnd(data);
 		return ll.getLastData().equals(data);
 	}
@@ -16,10 +22,10 @@ public class LinkedListTester {
 	private static boolean testGetSecondLastData() {
 		LinkedList<String> ll = new LinkedList<String>();
 		if(ll.getSecondLastData() != null) return false;
-		String data = "wetopuwopaeyuweaopy";
+		String data = randString();
 		ll.addEnd(data);
 		if(ll.getSecondLastData() != null) return false;
-		String data2 = "2306972q9y78@#(*&^(!*@#^UHY(Q@^*BEwehyo2uy";
+		String data2 = randString();
 		ll.addEnd(data2);
 		return ll.getSecondLastData().equals(data);
 	}
@@ -33,7 +39,7 @@ public class LinkedListTester {
 			return false;
 		} catch(IndexOutOfBoundsException e) {}
 		
-		String data = "^(QYOEHsdygw36#w36A%^30AEGH#^3690Y*Q23yY#(#";
+		String data = randString();
 		ll.addEnd(data);
 		if(!ll.getData(0).equals(data)) return false;
 		
@@ -42,7 +48,7 @@ public class LinkedListTester {
 			return false;
 		} catch(IndexOutOfBoundsException e) {}
 		
-		String data2 = "#W^DGSw3yehs#yuwrwejhD#^*(";
+		String data2 = randString();
 		ll.addEnd(data2);
 		if(!ll.getData(1).equals(data2)) return false;
 		
@@ -54,25 +60,25 @@ public class LinkedListTester {
 		LinkedList<String> ll = new LinkedList<String>();
 		
 		try {
-			String data0 = "awgheawywashasdhwAehaseh";
+			String data0 = randString();
 			ll.add(data0, -1);
 			return false;
 		} catch(IndexOutOfBoundsException e) {}
 		
-		String data = "236p2oqy8ugoqwehjAW:ehj";
+		String data = randString();
 		ll.add(data, 0);
 		if(!ll.getData(0).equals(data)) return false;
 		
-		String data2 = "sw9a4y8uawehwjaseh";
+		String data2 = randString();
 		ll.add(data2, 0);
 		if(!ll.getData(0).equals(data2)) return false;
 		
-		String data3 = "73wew34shasheawehawehawehwaehawehq236q23yhwawgW@#^47aW$&";
+		String data3 = randString();
 		ll.add(data3, 2);
 		if(!ll.getData(2).equals(data3)) return false;
 		
 		try {
-			String data4 = "q263989g87sdguioawsshdseh";
+			String data4 = randString();
 			ll.add(data4, 4);
 			return false;
 		} catch(IndexOutOfBoundsException e) {}
@@ -83,10 +89,10 @@ public class LinkedListTester {
 	//Tests the addEnd() method.
 	private static boolean testAddEnd() {
 		LinkedList<String> ll = new LinkedList<String>();
-		String data = "1239-67#(^W7sdghksdjl;#^QW(8w3yehsjklhjSLdhj";
+		String data = randString();
 		ll.addEnd(data);
 		if(!ll.getLastData().equals(data)) return false;
-		String data2 = "239068EGojseh#^()Q*";
+		String data2 = randString();
 		ll.addEnd(data2);
 		if(!ll.getLastData().equals(data2)) return false;
 		return true;
