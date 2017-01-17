@@ -34,6 +34,17 @@ public class LinkedList<T> {
 		m_size = 0;
 	}
 	
+	//Adds data t at the specified index. Automatically shifts other nodes to the right if needed.
+	//Throws IndexOutOfBoundsException if the index is out of bounds (index < 0 || index > size).
+	public void add(T t, int index) {
+		if(index == 0) {
+			add(null, t, true);
+			return;
+		}
+		Node<T> c = get(index - 1);
+		add(c, t, false);
+	}
+	
 	//Adds a node immediately after the node c, holding the data t. After adding, the current node m_cur will now point to the added node.
 	//If addHead is true, adds to the beginning and does not read the value of c.
 	private void add(Node<T> c, T t, boolean addHead) {
