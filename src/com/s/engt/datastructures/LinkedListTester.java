@@ -79,12 +79,24 @@ public class LinkedListTester {
 		
 		return true;
 	}
-		
+	
+	//Tests the addEnd() method.
+	private static boolean testAddEnd() {
+		LinkedList<String> ll = new LinkedList<String>();
+		String data = "1239-67#(^W7sdghksdjl;#^QW(8w3yehsjklhjSLdhj";
+		ll.addEnd(data);
+		if(!ll.getLastData().equals(data)) return false;
+		String data2 = "239068EGojseh#^()Q*";
+		ll.addEnd(data2);
+		if(!ll.getLastData().equals(data2)) return false;
+		return true;
+	}
 	public static void main(String[] args) {
 		System.out.println("Testing getLastData() returned " + testGetLastData());
 		System.out.println("Testing getSecondLastData() returned " + testGetSecondLastData());
 		System.out.println("Testing getData() returned " + testGetData());
 		System.out.println("Testing add() returned " + testAdd());
+		System.out.println("Testing addEnd() returned " + testAddEnd());
 	}
 
 }
