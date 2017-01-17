@@ -92,6 +92,22 @@ public class LinkedList<T> {
 		return delete(secondLast, secondLast.m_next, false);
 	}
 	
+	//Finds the last node in this list.
+	private Node<T> getLast() {
+		Node<T> cur;
+		for(cur = m_head.m_next; cur != null && cur.m_next != null; cur = cur.m_next) {
+		}
+		return cur;
+	}
+	
+	//Finds the second to last node in this list.
+	private Node<T> getSecondLast() {
+		if(m_size < 2) return null;
+		Node<T> cur;
+		for(cur = m_head.m_next; cur.m_next.m_next != null; cur = cur.m_next) {
+		}
+		return cur;
+	}
 	//Gets the n-th node in the list (zero-based).
 	private Node<T> get(int index) {
 		if(index < 0 || index > m_size-1) throw new IndexOutOfBoundsException("LinkedList index out of bounds!");
@@ -117,16 +133,6 @@ public class LinkedList<T> {
 		Node<T> secondlast = getSecondLast();
 		if(secondlast != null) return secondlast.m_data;
 		return null;
-	}
-	
-	//Finds the data of the last node in this list.
-	public T getLastData() {
-		return getLast().m_data;
-	}
-	
-	//Finds the data of the second to last node in this list.
-	public T getSecondLastData() {
-		return getSecondLast().m_data;
 	}
 
 }
