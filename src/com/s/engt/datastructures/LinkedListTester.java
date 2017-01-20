@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.UUID;
 
 public class LinkedListTester {
@@ -117,6 +118,20 @@ public class LinkedListTester {
 		return true;
 	}
 	
+	//Tests the deleteEnd() method.
+	private static boolean testDeleteEnd() {
+		LinkedList<String> ll = new LinkedList<String>();
+		String datas[] = new String[(new Random()).nextInt(Byte.MAX_VALUE)];
+		for(int i = 0; i < datas.length; i++) {
+			datas[i] = randString();
+			ll.addEnd(datas[i]);
+		}
+		for(int i = datas.length; i > 0; i--) {
+			if(!ll.deleteEnd().equals(datas[i-1])) return false;
+		}
+		return true;
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("Testing getLastData() returned " + testGetLastData());
 		System.out.println("Testing getSecondLastData() returned " + testGetSecondLastData());
@@ -124,7 +139,7 @@ public class LinkedListTester {
 		System.out.println("Testing add() returned " + testAdd());
 		System.out.println("Testing addEnd() returned " + testAddEnd());
 		System.out.println("Testing delete() returned " + testDelete());
-		
+		System.out.println("Testing deleteEnd() returned " + testDeleteEnd());
 	}
 
 }
