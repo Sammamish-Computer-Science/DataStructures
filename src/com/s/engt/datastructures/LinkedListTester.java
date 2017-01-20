@@ -97,12 +97,34 @@ public class LinkedListTester {
 		if(!ll.getLastData().equals(data2)) return false;
 		return true;
 	}
+	
+	//Tests the delete() method.
+	private static boolean testDelete() {
+		LinkedList<String> ll = new LinkedList<String>();
+		
+		String data = randString();
+		ll.addEnd(data);
+		
+		String data2 = randString();
+		ll.addEnd(data2);
+		
+		String data3 = randString();
+		ll.addEnd(data3);
+		
+		if(!ll.delete(1).equals(data2)) return false;
+		if(!ll.delete(0).equals(data)) return false;
+		if(!ll.delete(0).equals(data3)) return false;
+		return true;
+	}
+	
 	public static void main(String[] args) {
 		System.out.println("Testing getLastData() returned " + testGetLastData());
 		System.out.println("Testing getSecondLastData() returned " + testGetSecondLastData());
 		System.out.println("Testing getData() returned " + testGetData());
 		System.out.println("Testing add() returned " + testAdd());
 		System.out.println("Testing addEnd() returned " + testAddEnd());
+		System.out.println("Testing delete() returned " + testDelete());
+		
 	}
 
 }
