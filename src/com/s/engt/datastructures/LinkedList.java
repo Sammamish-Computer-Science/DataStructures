@@ -135,4 +135,8 @@ public class LinkedList<T> {
 		return null;
 	}
 
+	//Finds the size of the LinkedList.
+	public int getSize() {
+		return m_size;
+	}
 }
