@@ -131,7 +131,16 @@ public class LinkedListTester {
 		}
 		return true;
 	}
-	
+	//Tests the getSize() method.
+	private static boolean testGetSize() {
+		LinkedList<String> ll = new LinkedList<String>();
+		if(ll.getSize() != 0) return false;
+		ll.addEnd(randString());
+		if(ll.getSize() != 1) return false;
+		ll.delete(0);
+		if(ll.getSize() != 0) return false;
+		return true;
+	}
 	public static void main(String[] args) {
 		System.out.println("Testing getLastData() returned " + testGetLastData());
 		System.out.println("Testing getSecondLastData() returned " + testGetSecondLastData());
@@ -140,6 +149,7 @@ public class LinkedListTester {
 		System.out.println("Testing addEnd() returned " + testAddEnd());
 		System.out.println("Testing delete() returned " + testDelete());
 		System.out.println("Testing deleteEnd() returned " + testDeleteEnd());
+		System.out.println("Testing getSize() returned " + testGetSize());
 	}
 
 }
