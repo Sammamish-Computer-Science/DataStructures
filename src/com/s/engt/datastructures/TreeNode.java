@@ -26,4 +26,28 @@ public class TreeNode<T> {
 	public T getData() {
 		return m_data;
 	}
+	public void processTreePreOrder() {
+		processNode();
+		if(m_left != null)
+			m_left.processTreePreOrder();
+		if(m_right != null)
+			m_right.processTreePreOrder();
+	}
+	public void processTreeInOrder() {
+		if(m_left != null)
+			m_left.processTreeInOrder();
+		processNode();
+		if(m_right != null)
+			m_right.processTreeInOrder();
+	}
+	public void processTreePostOrder() {
+		if(m_left != null)
+			m_left.processTreePostOrder();
+		if(m_right != null)
+			m_right.processTreePostOrder();
+		processNode();
+	}
+	public void processNode() {
+		System.out.print(m_data + " ");
+	}
 }
