@@ -46,14 +46,30 @@ public class TreeNodeTester {
 		checkRight(root, null);
 		checkData(root, "Root");
 		
-		TreeNode<String> left = new TreeNode<String>("Left", null, null);
+		/*
+		 * Tree:
+		 *          Root
+		 *         /    \
+		 *        Left  Right
+		 *       /      /   \
+		 *      A      C     D
+		 *       \            \
+		 *        B            E
+		 */
+		TreeNode<String> left = new TreeNode<String>("Left", new TreeNode<String>("A", null, new TreeNode<String>("B", null, null)), null);
 		root.setLeft(left);
 		
-		TreeNode<String> right = new TreeNode<String>("Right", null, null);
+		TreeNode<String> right = new TreeNode<String>("Right", new TreeNode<String>("C", null, null), new TreeNode<String>("D", null, new TreeNode<String>("E", null, null)));
 		root.setRight(right);
 		
 		checkLeft(root, left);
 		checkRight(root, right);
+		
+		root.processTreePreOrder();
+		System.out.println();
+		root.processTreeInOrder();
+		System.out.println();
+		root.processTreePostOrder();
 	}
 	
 }
