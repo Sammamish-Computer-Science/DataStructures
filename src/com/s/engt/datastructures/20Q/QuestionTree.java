@@ -17,8 +17,8 @@ public class QuestionTree {
 			String response = console.nextLine().trim().toLowerCase(); 
 			if (response.equals("y")) 
 				return true; 
-		else if (response.equals("n")) 
-		return false; 
+			else if (response.equals("n")) 
+				return false; 
 			else 
 				System.out.println("Please answer y or n."); 
 		} 
