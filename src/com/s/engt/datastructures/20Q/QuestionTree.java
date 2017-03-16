@@ -31,11 +31,9 @@ public class QuestionTree {
 	}
 	//Recursively reads the input and create a tree (preorder)
 	private QuestionNode<String> readHelper(Scanner input) {
-		//Check for null and read a line from the Scanner
-		if(input == null) return null;
+		//Read a line from the Scanner
 		String questionType = input.nextLine();
 		String line = input.nextLine();
-		if(questionType == null || line == null) return null;
 		QuestionNode<String> root = new QuestionNode<String>(line, null, null);
 		if(questionType.equals("Q:")) {
 			//This node has children (it's a question), find them
