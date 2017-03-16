@@ -26,28 +26,25 @@ public class QuestionNode<T> {
 	public T getData() {
 		return m_data;
 	}
-	public void processTreePreOrder() {
-		processNode();
+	public void processTreePreOrder(QuestionTree.ProcessNode pn) {
+		pn.processNode(this);
 		if(m_left != null)
-			m_left.processTreePreOrder();
+			m_left.processTreePreOrder(pn);
 		if(m_right != null)
-			m_right.processTreePreOrder();
+			m_right.processTreePreOrder(pn);
 	}
-	public void processTreeInOrder() {
+	public void processTreeInOrder(QuestionTree.ProcessNode pn) {
 		if(m_left != null)
-			m_left.processTreeInOrder();
-		processNode();
+			m_left.processTreeInOrder(pn);
+		pn.processNode(this);
 		if(m_right != null)
-			m_right.processTreeInOrder();
+			m_right.processTreeInOrder(pn);
 	}
-	public void processTreePostOrder() {
+	public void processTreePostOrder(QuestionTree.ProcessNode pn) {
 		if(m_left != null)
-			m_left.processTreePostOrder();
+			m_left.processTreePostOrder(pn);
 		if(m_right != null)
-			m_right.processTreePostOrder();
-		processNode();
-	}
-	public void processNode() {
-		System.out.print(m_data + " ");
+			m_right.processTreePostOrder(pn);
+		pn.processNode(this);
 	}
 }

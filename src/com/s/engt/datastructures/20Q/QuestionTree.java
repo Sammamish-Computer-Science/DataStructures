@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import QuestionTree.ProcessNode;
+
 public class QuestionTree {
 	private QuestionNode<String> m_root;
 	private Scanner console;
@@ -28,6 +30,12 @@ public class QuestionTree {
 	//Replaces the current tree with a new tree using the information in the file read by the Scanner input
 	public void read(Scanner input) {
 		m_root = readHelper(input);
+		m_root.processTreePreOrder(new ProcessNode(){
+			@Override
+			public void processNode(QuestionNode<?> node) {
+				System.out.println(node.getData());
+			}
+		});
 	}
 	//Recursively reads the input and create a tree (preorder)
 	private QuestionNode<String> readHelper(Scanner input) {
@@ -41,5 +49,9 @@ public class QuestionTree {
 			root.setRight(readHelper(input));
 		}
 		return root;
+	}
+	//This interface contains one method, processNode, that will be called when the nodes are being processed while a traversal is being performed.
+	public interface ProcessNode {
+		public void processNode(QuestionNode<?> node);
 	}
 }
