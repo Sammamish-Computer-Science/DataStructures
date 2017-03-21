@@ -59,7 +59,7 @@ public class QuestionTree {
 		}
 		@Override
 		public void processNode(QuestionNode<?> node) {
-			if(node.getLeft() == null && node.getRight() == null) {
+			if(node.isLeaf()) {
 				//This is an answer node (a leaf)
 				m_input.println("A:");
 			} else {

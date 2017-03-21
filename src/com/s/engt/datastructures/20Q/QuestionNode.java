@@ -23,6 +23,9 @@ public class QuestionNode<T> {
 	public QuestionNode<T> getRight() {
 		return m_right;
 	}
+	public boolean isLeaf() {
+		return m_left == null && m_right == null;
+	}
 	public T getData() {
 		return m_data;
 	}
