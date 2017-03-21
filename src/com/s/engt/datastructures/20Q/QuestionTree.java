@@ -26,6 +26,55 @@ public class QuestionTree {
 		} 
 	}
 	
+	//Asks the user a series of yes/no questions until the object is guessed correctly or the computer fails
+	//If the computer fails, add the new object to the tree, along with a new question to distinguish the object from the others
+	public void askQuestions() {
+		QuestionNode<String> curNode = m_root; //The current node
+		QuestionNode<String> curNodeParent = null; //The parent of the current node
+		boolean lastCorrect = false; //If the answer to the last question asked is yes
+		while(curNode != null) {
+			if(curNode.isLeaf()) {
+				//We've reached an answer node
+				if(yesTo("Would your object happen to be " + curNode.getData())) {
+					System.out.println("Great, I got it right!");
+				} else {
+					System.out.println("What is the name of your object? ");
+					String newObjectName = console.nextLine().trim();
+					System.out.println("Please give me a yes/no question that distinguishes between your object and mine-->");
+					String question = console.nextLine().trim();
+					boolean answer = yesTo("And what is the answer for your object?");
+					//Create a question node and add curNode and a node representing the new object to it
+					QuestionNode<String> newObjectNode = new QuestionNode<String>(newObjectName, null, null);
+					QuestionNode<String> questionNode;
+					if(answer) {
+						questionNode = new QuestionNode<String>(question, newObjectNode, curNode);
+					} else {
+						questionNode = new QuestionNode<String>(question, curNode, newObjectNode);
+					}
+					//Add questionNode to curNodeParent
+					if(curNodeParent == null) { //curNode is the root node
+						m_root = questionNode; //Replace the root node with questionNode
+					} else {
+						if(lastCorrect) {
+							curNodeParent.setLeft(questionNode);
+						} else {
+							curNodeParent.setRight(questionNode);
+						}
+					}
+				}
+				return;
+			} else {
+				curNodeParent = curNode;
+				lastCorrect = yesTo(curNode.getData());
+				if(lastCorrect) {
+					curNode = curNode.getLeft();
+				} else {
+					curNode = curNode.getRight();
+				}
+			}
+		}
+	}
+	
 	//Replaces the current tree with a new tree using the information in the file read by the Scanner input
 	public void read(Scanner input) {
 		m_root = readHelper(input);
